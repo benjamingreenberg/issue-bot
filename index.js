@@ -3,7 +3,7 @@ const { BigQuery } = require('@google-cloud/bigquery');
 const webHook = require('@slack/webhook').IncomingWebhook;
 
 const PROJECT_NAME = 'YOUR_PROJECT_NAME';
-const BIGQUERY_DATASOURCE = 'YYOUR_BIGQUERY_DATASOURCE';
+const BIGQUERY_DATASOURCE = 'YOUR_BIGQUERY_DATASOURCE';
 const BIGQUERY_TABLE = 'YOUR_BIGQUERY_TABLE';
 
 const SLACK_BOT_APP_ID = 'YOUR_BOT_APP_ID';
