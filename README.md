@@ -44,21 +44,23 @@ anything in column D.
   * Type the following in cell B2: `This list`
 * Response ("list" / C2 is a formula do not edit)
   * Formula for cell C2: `=join("   ", SORT(FILTER(D3:D, NOT(A3:A = ""))))`
-* List Response (do not edit)
+* List Response (do not edit cells in this column)
   * Formula beginning in cell D2, then copy/paste to all cells in column D:
-```
-="`" & A2 & "`" & " = " & B2
-```
+  * ```=IF( A2 <> "",IF( B2 <> "", "`" & A2 & "`" & " = " & B2, "" ), "" )```
+
+  | Short Code  | Description    | Response ("list" / C2 is a formula do not edit)             | List Response (do not edit cells in this column)  |
+  | ----------- | -------------- | ----------------------------------------------------------- | --------------------------------------------------|
+  | list        | This list      | `=join("   ", SORT(FILTER(D3:D, NOT(A3:A = ""))))`          | ```=IF( A2 <> "",IF( B2 <> "", "`" & A2 & "`" & " = " & B2, "" ), "" )```|
 
 Add some entries by entering Short codes, Descriptions and Responses. If you don't
 have real entries, then just create some test ones. After you are done, your
 Sheet should look something like
 
-  | Short Code  | Description    | Response                                                    | List Response                 |
-  | ----------- | -------------- | ----------------------------------------------------------- | ----------------------------- |
-  | list        | This list      | \`example1\` = First example   \`example2\` = Second example| \`list\` = list               |
-  | example1    | First example  | This is the response for the first example                  | \`example1\` = First example  |
-  | example2    | Second example | This is the response for the second example                 | \`example2\` = Second example |
+  | Short Code  | Description    | Response ("list" / C2 is a formula do not edit)             | List Response (do not edit cells in this column)  |
+  | ----------- | -------------- | ----------------------------------------------------------- | --------------------------------------------------|
+  | list        | This list      | \`example1\` = First example   \`example2\` = Second example| \`list\` = list                                   |
+  | example1    | First example  | This is the response for the first example                  | \`example1\` = First example                      |
+  | example2    | Second example | This is the response for the second example                 | \`example2\` = Second example                     |
 
 Finally, Share the Sheet with everyone who will need to add entries to it, as well as the
 user account that will create the BigQuery table.
