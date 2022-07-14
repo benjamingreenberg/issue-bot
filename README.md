@@ -22,11 +22,11 @@ along with a short description of the issue; typing an issue’s word results in
 the bot replying within the channel with that issue's response.
 
 You will need to enable billing on the Google Cloud Account, and add a credit
-card to the account. But Google gives new accounts $300 credit for a year, so it
-won't cost your campaign anything. I also think that the resources needed by
-this system falls below Google Cloud's Free Tier limits, so it may not cost
-anything even without the credit. If there are costs, my guess they will be less
-than a dollar a month.
+card to the account. I believe that the resources needed by this system falls
+below Google Cloud's Free Tier limits, so it may not cost anything to run. If
+there are costs, my guess is that they will be less than a dollar a month. Set
+up billing alerts for $1 or less, so you are notified if you do exceed the
+free-tier limits.
 
 ## Setup
 
@@ -79,19 +79,27 @@ Create a table with the Google Sheet as its source.
 
 The Table should have the following characteristics
 
-* Source: Drive
-* File format: Google Sheet
-* Select Drive URI: The URL of the Sheet, which you get by opening it and
+* Source
+  * *Create table from*: Drive
+  * *Select Drive URI*: The URL of the Sheet, which you get by opening it and
 copy/pasting the URL in the address bar. It should look something like
   `https://docs.google.com/spreadsheets/d/XXXXX/edit#gid=XXXXX`
-* Add four fields to the table that correspond to the columns in the Sheet. They
-should be in the same order they are in the Sheet, have the data type of String,
-and be Nullable
-  * short_code
-  * description
-  * response
-  * list_response
-* Click Advanced options and set *Header rows to skip* to 1
+  * *File format*: Google Sheet
+* Destination
+  * *Table*: whatever you want, but I prefer lowercase letters/numbers, and words separated by underscores instead of spaces
+* Schema
+  * Add four fields to the table that correspond to the columns in the Sheet. They
+  should be in the same order they are in the Sheet, have the data type of String,
+  and be Nullable. You can do it manually, or toggle on *Edit as text*, and
+  copy paste this:
+    ```
+    short_code:STRING,
+    description:STRING,
+    response:STRING,
+    list_response:STRING
+    ```
+* *Advanced options*
+    * *Header rows to skip*: 1
 
 Click the *Create table button* when done.
 
