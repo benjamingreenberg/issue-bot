@@ -1,0 +1,32 @@
+{
+  "display_information": {
+    "name": "Issues Bot"
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "Issues Bot",
+      "always_online": true
+    }
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": [
+        "incoming-webhook",
+        "channels:history",
+        "groups:history"
+      ]
+    }
+  },
+  "settings": {
+    "event_subscriptions": {
+      "request_url": "URL_FOR_getIssueResponse_ENDPOINT",
+      "bot_events": [
+        "message.channels",
+        "message.groups"
+      ]
+    },
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": false,
+    "token_rotation_enabled": false
+  }
+}
