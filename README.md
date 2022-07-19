@@ -52,7 +52,7 @@ https<nolink>://docs.google.com/spreadsheets/d/`SHEET_ID_IS_HERE`/edit#gid
 
 ### Cloud Functions
 
-Create a Google Cloud Platform project if you don't already have one tat you
+Create a Google Cloud Platform project if you don't already have one that you
 want to use for the Functions.
 <https://cloud.google.com/resource-manager/docs/creating-managing-projects>
 
