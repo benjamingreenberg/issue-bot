@@ -52,11 +52,18 @@ https<nolink>://docs.google.com/spreadsheets/d/`SHEET_ID_IS_HERE`/edit#gid
 
 ### Cloud Functions
 
+Create a Google Cloud Platform project if you don't already have one tat you
+want to use for the Functions.
+<https://cloud.google.com/resource-manager/docs/creating-managing-projects>
+
 These instructions assume you are doing everything from within the Google Cloud
 Console. However, if you are familiar with Google Firebase, you can use it to
 develop, test, and deploy the functions. The package.json file already has the
 dependencies for Firebase Functions, and the exports are written to work with
-the Firebase Functions Emulator.
+the Firebase Functions Emulator. The only big difference is that when you
+Authorize the Functions to access your Sheet, you need to follow the steps using
+the *Firebase Admin SDK Service Agent* instead of the *App Engine default*
+*service account*
 
 You will need the issuebot.zip file on your local computer. You can download
 just that file from the repo, or download/clone the entire repo to your
@@ -65,14 +72,18 @@ local filesystem.
 There are two endpoints defined in the source code. These are the functions that
 begin with *exports*. You will need to create a different Cloud Function for
 each endpoint you want to deploy.
-testSheets: This optional endpoint lets you use your browser to test the Sheets
+
+**testSheets**: This optional endpoint lets you use your browser to test the Sheets
 integration.
-getIssueResponse: This is the endpoint that Slack will send requests to.
+
+**getIssueResponse**: This is the endpoint that Slack will send requests to.
 
 The steps to create them are almost exactly the same. The only difference is
-what you enter for their *name* and the *endpoint* the name points to.
+what you enter for their *name* and the *endpoint* the name points to. After
+creating one of the Functions, you can use the Console's *Copy function* feature
+to create the second one.
 
-Go to Cloud Functions in the console, and click Create Function
+Go to *Cloud Functions* in the Google Cloud Console, and click Create Function
 <https://console.cloud.google.com/functions>
 
 * *Environment*: 1st gen (hasn't been tested with gen2)
@@ -108,6 +119,10 @@ zip to the Cloud Function. It could take a few minutes for it to finish
 deploying, but there are still some more things to do before it will work.
 
 ### Authorize the function with your Google Sheet
+
+Note: If you are using Firebase to configure and deploy the App, then follow the
+steps below using the *Firebase Admin SDK Service Agent* instead of the *App*
+*Engine default service account*
 
 Go to *API & Services* and click *Enable APIs and Services* at the top. Find and
 enable the *Google Sheets API*.
