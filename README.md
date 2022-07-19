@@ -40,7 +40,8 @@ You can name them whatever you want, as long as they are in the first row:
 Add some entries below the header row. If you don't have real entries, then just
 create some test ones. Your Sheet should look something like this
 
-  | Short Code  | Description    | Response                                    |
+  | Short Code  | Description    | Response                      |
+  | ----------- | -------------- | ----------------------------- |
   | example1    | First example  | The first example's response  |
   | example2    | Second example | The second example's response |
 
