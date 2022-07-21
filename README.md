@@ -243,3 +243,13 @@ indications about what the problem is.
 
 Note: This currently does not authenticate the request
 <https://cloud.google.com/functions/docs/tutorials/slack#receiving_the_webhook>
+
+## Tips
+
+Don't add an entry for the *list* command. It will be added automatically.
+
+Make your short codes as easy to read and type as possible
+
+* No spaces
+* No punctuation
+* Minimal number of characters (use abbreviations if necessary)
