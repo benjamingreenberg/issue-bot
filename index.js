@@ -1,8 +1,8 @@
 const functions = require('firebase-functions');
 const webHook = require('@slack/webhook').IncomingWebhook;
-
 const { google } = require('googleapis');
 const env = require('./env.json');
+
 const SHEETS_SCOPES = env.SHEETS_SCOPES;
 const SPREADSHEET_ID = env.SPREADSHEET_ID;
 const GOOGLE_SERVICE_ACCOUNT_CREDENTIALS = env.GOOGLE_SERVICE_ACCOUNT_CREDENTIALS;
@@ -109,7 +109,9 @@ async function getIssueResponse( shortCode ) {
   if ( ! issues ) {
     return false;
   }
-  return issues[ shortCode ] || false;
+
+  const normalizedCode = shortCode.trim().toLocaleLowerCase();
+  return issues[ normalizedCode ] || false;
 }
 
 async function getIssues() {
@@ -136,8 +138,9 @@ async function getIssues() {
     const description = row [ 1 ];
     const response = row[ 2 ];
     if ( shortCode && description && response ) {
+      const normalizedCode = shortCode.trim().toLocaleLowerCase();
       list.push( `\`${ shortCode }\` = ${ description }` )
-      issues[ shortCode ] = response;
+      issues[ normalizedCode ] = response;
     }
   })
 
