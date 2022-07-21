@@ -110,7 +110,7 @@ async function getIssueResponse( shortCode ) {
     return false;
   }
 
-  const normalizedCode = shortCode.trim().toLocaleLowerCase();
+  const normalizedCode = normalizedShortCode( shortCode );
   return issues[ normalizedCode ] || false;
 }
 
@@ -138,7 +138,7 @@ async function getIssues() {
     const description = row [ 1 ];
     const response = row[ 2 ];
     if ( shortCode && description && response ) {
-      const normalizedCode = shortCode.trim().toLocaleLowerCase();
+      const normalizedCode = normalizedShortCode( shortCode );
       list.push( `\`${ shortCode }\` = ${ description }` )
       issues[ normalizedCode ] = response;
     }
@@ -155,6 +155,13 @@ async function getAuthToken() {
     scopes: SHEETS_SCOPES,
   });
   return auth;
+}
+
+function normalizedShortCode( shortCode ) {
+  if ( ! shortCode ) {
+    return '';
+  }
+  return  shortCode.toLocaleLowerCase().replace(/\s+/g, '');
 }
 
 async function sendToSlack( message, webhook ) {
