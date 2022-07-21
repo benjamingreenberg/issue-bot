@@ -12,11 +12,12 @@ const SLACK_WEBHOOK = new webHook( SLACK_WEBHOOK_URL );
 
 exports.testSheets = functions.https.onRequest( async ( request, response ) => {
   const shortCode = request.query.code || request.body.code || 'list';
-  if ( typeof shortCode != 'string' || shortCode.search( /^[a-z0-9]+$/i ) == -1 ) {
+  if ( typeof shortCode != 'string' || shortCode.search( /^[a-z0-9.?;'"!&\\\/\|\@\s]+$/i ) == -1 ) {
     response.status( 400 ).send( 'Invalid input' );
+  } else {
+    const result = await getIssueResponse( shortCode );
+    response.status( 200 ).send( result );
   }
-  const result = await getIssueResponse( shortCode );
-  response.status( 200 ).send( result );
 })
 
 exports.getIssueResponse = functions.https.onRequest( async ( request, response ) => {

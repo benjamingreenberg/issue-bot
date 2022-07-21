@@ -50,6 +50,11 @@ Function, so don't close it yet. One of the things you will need is the Sheet's
 ID, which is a bunch of random characters, and can be found in its URL:
 https<nolink>://docs.google.com/spreadsheets/d/`SHEET_ID_IS_HERE`/edit#gid
 
+Short codes can only contain letters, numbers, spaces, and the following special
+characters *! ? @ ' " . ; & \ / | @*
+
+The *Tips* section below has some suggestions when picking Short Codes.
+
 ### Cloud Functions
 
 Create a Google Cloud Platform project if you don't already have one that you
@@ -250,6 +255,6 @@ Don't add an entry for the *list* command. It will be added automatically.
 
 Make your short codes as easy to read and type as possible
 
-* No spaces
-* No punctuation
+* Avoid using spaces
+* Avoid using punctuations or other special characters
 * Minimal number of characters (use abbreviations if necessary)
